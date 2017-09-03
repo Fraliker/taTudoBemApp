@@ -1,54 +1,49 @@
 import { Injectable } from "@angular/core";
-import { Platform } from 'ionic-angular';
-
-declare var cordova;
+import { Platform, App } from 'ionic-angular';
+import { OneSignal } from '@ionic-native/onesignal';
 
 @Injectable()
 export class PushService {
 
-    PUSHWOOSH_APP_ID: string = 'B24E8-4AF21';
-    GOOGLE_PROJECT_NUMBER: string = '494295368226';
-    MPNS_SERVICE_NAME: string = 'tatudobemapp';
-    
-    constructor(public platform : Platform){
+    OneSginalID: string = '0e84b5ea-8166-4ce1-b0f8-fd0b82eac0be';
+    OneSignaKey: string = 'MmQ2N2YxMDAtYTFlMy00YzcyLThkNjgtYzZlNWIxNjE0ZjM3';
+    private data;
 
+    constructor(
+        public platform: Platform,
+        public oneSignal: OneSignal,
+        private app: App) {
         this.platform.ready().then(() => {
-            if(this.platform.is('ios') || this.platform.is('android')){
-                console.log("PushwooshService init: Running on push compatible platform "+ this.platform.userAgent() +')');
-                this.initPushwoosh();
-            } else{
-                console.log("PushwooshService init: No compatible platform available.  Skipping init.)");
-                return;
-            }
-        });
+            this.data = {
+                "additionalData": {
+
+                }
+            };
+            this.getProvider();
+        })
+
     }
 
-    initPushwoosh(){
-        var pushNotification = cordova.require("pushwoosh-cordova-plugin.PushNotification");
-
-          document.addEventListener('push-notification', function (event) {
-            var userData = (event as any).userdata; 
-
-            if (userData) {
-            console.log('user data: ' + JSON.stringify(userData));
-            }
-
-          });
-
-          pushNotification.onDeviceReady({
-              appid: this.PUSHWOOSH_APP_ID,
-              projectid: this.GOOGLE_PROJECT_NUMBER,
-              serviceName: this.MPNS_SERVICE_NAME
-          });
-
-          pushNotification.registerDevice(
-              function (status) {
-                var pushToken = status;
-                console.log(pushToken);
-              },
-              function (status) {
-              }
-          );
+    setNotify(value) {
+        this.oneSignal.setSubscription(value);
     }
 
+    getProvider() {
+        
+        let oneSignalReturn = (data) => {
+            console.log('Notification: ' + JSON.stringify(data));
+            this.data.additionalData = data["notification"]["payload"]["additionalData"];
+            console.log('Notification: ' + this.data.additionalData["id"]);
+            console.log('Notification scene: ' + this.data.additionalData["scene"]);
+            this.sceneManager(this.data.additionalData["scene"]);
+        };
+        
+        this.oneSignal.inFocusDisplaying(this.oneSignal.OSInFocusDisplayOption.Notification);
+        this.oneSignal.startInit(this.OneSginalID, this.OneSignaKey).handleNotificationOpened(oneSignalReturn)
+            .endInit();
+    }
+
+    sceneManager(scene){
+        this.app.getActiveNav().push(scene);
+    }
 }

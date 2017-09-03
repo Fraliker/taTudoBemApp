@@ -1,12 +1,7 @@
-import { Component, Injectable } from '@angular/core';
-import { NavController, NavParams, Platform, Events, AlertController, ToastController, LoadingController } from 'ionic-angular';
-import { NativeStorage } from '@ionic-native/native-storage';
-
-import 'rxjs/add/operator/map';
-
+import { Storage } from '@ionic/storage';
+import { Component } from '@angular/core';
+import { NavController, LoadingController, Platform, ToastController } from 'ionic-angular'
 import { PushService } from "../../providers/push-service/push-service";
-
-declare var cordova;
 
 declare var navigator;
 declare var Connection;
@@ -17,26 +12,25 @@ declare var Connection;
   providers: [PushService]
 })
 
-@Injectable()
 export class ConfigPage {
 
+  public data: any;
   public canBeNotify: boolean;
-  public notifications = [];
 
   constructor(
-    public navCtrl: NavController,
-    public navParams: NavParams,
-    public events: Events,
-    public platform: Platform,
-    public alertCtrl: AlertController,
+    public navController: NavController,
+    public loadingController: LoadingController,
+    public storage: Storage,
     public pushService: PushService,
-    public toastCtrl: ToastController,
+    public platform: Platform,
     public loadingCtrl: LoadingController,
-    private nativeStorage: NativeStorage
+    public toastCtrl: ToastController) {
 
-  ) {
+    this.storage = storage;
+    this.data = {};
+
     this.checkNetwork();
-    this.notify();
+
   }
 
   checkNetwork() {
@@ -66,7 +60,9 @@ export class ConfigPage {
 
   ionViewDidLoad() {
     this.loading();
+    this.notify();
   }
+
 
   loading() {
     let loading = this.loadingCtrl.create({
@@ -85,73 +81,17 @@ export class ConfigPage {
     loading.present();
   }
 
-  notify() {
-
-    this.nativeStorage.getItem('notifications').then(res => {
-      this.canBeNotify = res;
-      console.log("sera?   " + res);
-    });
-  }
-
-  saveNotify() {
-    this.nativeStorage.setItem('notifications', this.canBeNotify).then(res => {
-      console.log("save: " + res)
-
-      if (res == true) {
-        this.pushwooshRegisterDevice().then(res => {
-          console.log("teste register: " + JSON.stringify(res))
-        })
-      } else {
-        this.pushwooshUnregisterDevice().then(res => {
-          console.log("teste unregister: " + res)
-        });
-      }
-    })
-  }
-
-  pushwooshRegisterDevice() {
-
-    var pushwoosh = cordova.require("pushwoosh-cordova-plugin.PushNotification");
-    pushwoosh.onDeviceReady({
-      appid: "B24E8-4AF21",
-      projectid: "494295368226",
-      serviceName: "tatudobemapp"
-    });
-
-    return new Promise((resolve) => {
-      pushwoosh.registerDevice(
-        function (status) {
-          console.log("register: " + JSON.stringify(status));
-        },
-        function (status) {
-          console.log("failed to register: " + status);
-        }
+    notify() {
+      this.storage.get('notifications').then(
+        data => this.canBeNotify = data,
+        error => console.error(error)
       );
-      resolve(status)
-    })
+    }
+
+    saveNotify() {
+      this.storage.set('notifications', this.canBeNotify).then(res => {
+        console.log("save: " + res)
+        this.pushService.setNotify(res);
+      });
+    }
   }
-
-  pushwooshUnregisterDevice() {
-
-    var pushwoosh = cordova.require("pushwoosh-cordova-plugin.PushNotification");
-    pushwoosh.onDeviceReady({
-      appid: "B24E8-4AF21",
-      projectid: "494295368226",
-      serviceName: "tatudobemapp"
-    });
-
-
-    return new Promise((resolve) => {
-      pushwoosh.unregisterDevice(
-        function (status) {
-          console.log("unregister: " + JSON.stringify(status));
-        },
-        function (error) {
-          console.log("failed to unregister: " + status);
-        }
-      )
-      resolve(status)
-    })
-
-  }
-}
