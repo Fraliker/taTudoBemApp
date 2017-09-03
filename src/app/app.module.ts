@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
+import { IonicStorageModule } from '@ionic/storage';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
@@ -17,8 +18,10 @@ import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireModule } from 'angularfire2';
 import { FirebaseProvider } from './../providers/firebase/firebase';
 import { PushService } from "../providers/push-service/push-service";
-import { NativeStorage } from "@ionic-native/native-storage";
 import { CallNumber } from "@ionic-native/call-number";
+import { ReasonsLivePage } from "../pages/reasons-live/reasons-live";
+import { HowtoHelpPage } from "../pages/howto-help/howto-help";
+import { OneSignal } from "@ionic-native/onesignal";
 
 const firebaseConfig = {
   apiKey: "AIzaSyAaYhj0YJhDP8YtdidxebiSlM_nEtv7Hnc",
@@ -36,7 +39,9 @@ const firebaseConfig = {
     WelcomePage,
     AboutPage,
     FaqPage,
-    ConfigPage
+    ConfigPage,
+    ReasonsLivePage,
+    HowtoHelpPage
   ],
   imports: [
     BrowserModule,
@@ -44,6 +49,7 @@ const firebaseConfig = {
     AngularFireDatabaseModule,
     AngularFireModule.initializeApp(firebaseConfig),
     IonicModule.forRoot(MyApp),
+    IonicStorageModule.forRoot(),    
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -52,7 +58,9 @@ const firebaseConfig = {
     WelcomePage,
     AboutPage,
     FaqPage,
-    ConfigPage
+    ConfigPage,
+    ReasonsLivePage,
+    HowtoHelpPage
   ],
   providers: [
     StatusBar,
@@ -60,8 +68,8 @@ const firebaseConfig = {
     { provide: ErrorHandler, useClass: IonicErrorHandler },
     FirebaseProvider,
     PushService,
-    CallNumber,
-    NativeStorage
-  ]
+    OneSignal,
+    CallNumber
+   ]
 })
 export class AppModule { }
