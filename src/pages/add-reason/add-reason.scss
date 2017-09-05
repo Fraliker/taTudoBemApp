@@ -1,0 +1,23 @@
+.ios, .md { 
+    ion-header { 
+        .back-button-text { 
+            display: none;
+        }
+        ion-icon { 
+            &:last-child { 
+                // font-size: 3em;
+                font-weight: 700;
+            }
+        }
+    }
+    page-add-reason {
+        ion-item { 
+            padding-left: 0;
+        }
+        textarea { 
+            height: 60px;
+            margin: 10px 0;
+        }
+    }
+    
+}
