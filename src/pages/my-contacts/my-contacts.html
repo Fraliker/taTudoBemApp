@@ -1,0 +1,32 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+       <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Contatos de emergência</ion-title>
+    <ion-buttons end>
+      <button ion-button (click)="add()" class="add-item">
+          <ion-icon name="create"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="todos" padding>
+    <p>Esta é uma pequena agenda com o seu contato de emergência. Se quiser, poderá adicionar 1 contato de confiança. Caso não se sinta bem e você clique em "Preciso falar com alguém!" uma mensagem SMS é disparada informando ao seus contato que você precisa de apoio.</p>    
+    <hr />
+    <ion-list no-padding>
+        <ion-item-sliding>
+            <ion-item *ngIf="phone != null">
+                <p><strong>Contato</strong></p>
+                <p>Nome: {{ name }}</p>
+                <p>Telefone: {{ phone }}</p>
+            </ion-item>
+            <!-- <ion-item-options>
+                <button ion-full ion-button color="danger" (click)="delete()">
+                    <ion-icon name="trash"></ion-icon> Excluir
+                </button>
+            </ion-item-options> -->
+        </ion-item-sliding>
+    </ion-list>
+</ion-content>
