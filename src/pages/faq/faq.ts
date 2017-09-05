@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, LoadingController, ToastController, Platform } from 'ionic-angular';
+import { NavController, NavParams, LoadingController, ToastController, Platform, MenuController } from 'ionic-angular';
 import { FirebaseProvider } from './../../providers/firebase/firebase';
 import { FirebaseListObservable } from 'angularfire2/database';
+import { WelcomePage } from "../welcome/welcome";
 
 declare var navigator;
 declare var Connection;
@@ -16,39 +17,44 @@ export class FaqPage {
 
   shownGroup = null;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public loadingCtrl: LoadingController, public firebaseProvider: FirebaseProvider, public toastCtrl: ToastController, public platform: Platform) {
+  constructor(public navCtrl: NavController, public menu: MenuController, public navParams: NavParams, public loadingCtrl: LoadingController, public firebaseProvider: FirebaseProvider, public toastCtrl: ToastController, public platform: Platform) {
 
     this.suicideFacts = this.firebaseProvider.getSuicideInfos();
     this.checkNetwork();
   }
 
   checkNetwork() {
-
-    this.platform.ready().then(() => {
-
-      var networkState = navigator.connection.type;
-      var states = {};
-
-      states[Connection.NONE] = 'Sem conexão com a internet. Por favor, verifique sua rede Wi-Fi ou a do seu celular.';
-
-      if (states[networkState] == states[Connection.NONE]) {
-        let toast = this.toastCtrl.create({
-          message: states[Connection.NONE],
-          duration: 3000,
-          showCloseButton: true,
-          closeButtonText: 'Ok',
-          position: 'bottom'
-        });
-
-        toast.present();
+    
+        this.platform.ready().then(() => {
+    
+          var networkState = navigator.connection.type;
+          var states = {};
+    
+          states[Connection.NONE] = 'Sem conexão com a internet. Por favor, verifique sua rede Wi-Fi ou a do seu celular.';
+    
+          if (states[networkState] == states[Connection.NONE]) {
+            let toast = this.toastCtrl.create({
+              message: states[Connection.NONE],
+              duration: 3000,
+              showCloseButton: true,
+              closeButtonText: 'Ok',
+              position: 'bottom'
+            });
+    
+            this.navCtrl.setRoot(WelcomePage);
+    
+            toast.present();
+          }
+    
+        })
+    
       }
-
-    })
-
-  }
 
   ionViewDidLoad() {
     this.loading();
+
+    this.menu.close();
+    this.menu.enable(true);
   }
 
   loading() {

@@ -13,18 +13,26 @@
                 margin: 0 16px 0 0;
             }
         }
+        ion-item { 
+            &.item-block { 
+                &:first-child,
+                &:last-child {
+                    border-top: 0;
+                    border-bottom: 0;
+                }
+            }
+            .item-inner { 
+                border-bottom: 0;
+            }
+        }
         .description {
             margin-left: 45px;
             font-size: 14px;
         }
-        .disclaimer {
-            background: #f8f8f8;
-            position: absolute;
-            left: 0;
-            p {
-                font-size: 13px;
-                padding: 5px 25px;
-            }
+        .disclaimer { 
+            background: transparent;
+            font-size: 12px;
+            margin: 10px 0;
         }
     }
 }
