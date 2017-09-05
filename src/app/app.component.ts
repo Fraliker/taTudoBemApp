@@ -9,6 +9,9 @@ import { AboutPage } from "../pages/about/about";
 import { FaqPage } from "../pages/faq/faq";
 import { ConfigPage } from "../pages/config/config";
 import { PushService } from "../providers/push-service/push-service";
+import { ReasonsLivePage } from "../pages/reasons-live/reasons-live";
+import { HowToPage } from "../pages/how-to/how-to";
+import { MyContactsPage } from "../pages/my-contacts/my-contacts";
 
 
 @Component({
@@ -26,8 +29,11 @@ export class MyApp {
     this.initializeApp();
 
     this.pages = [
-      { title: 'Home', component: HomePage, icon: 'home' },
-      { title: 'Mitos e verdades', component: FaqPage, icon: 'paper' },
+      { title: 'Preciso de ajuda', component: HomePage, icon: 'call' },
+      { title: 'Contatos de emergência', component: MyContactsPage, icon: 'contact' },
+      { title: 'Mitos sobre o suicídio', component: FaqPage, icon: 'paper' },
+      { title: 'Razões para viver', component: ReasonsLivePage, icon: 'clipboard' },
+      { title: 'Como ajudar', component: HowToPage, icon: 'text' },
       { title: 'Configurações', component: ConfigPage, icon: 'settings' },
       { title: 'Sobre o app', component: AboutPage, icon: 'heart' }
     ];
