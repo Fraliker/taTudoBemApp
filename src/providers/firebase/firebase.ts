@@ -10,4 +10,12 @@ export class FirebaseProvider {
     return this.fireDatabase.list('/suicideFacts/');
   }
 
+  getSuicideSigns() {
+    return this.fireDatabase.list('/suicideSigns/');
+  }
+
+  getHowToHelp() {
+    return this.fireDatabase.list('/howToHelp/');
+  }
+
 }
