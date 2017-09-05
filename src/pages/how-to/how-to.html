@@ -1,0 +1,36 @@
+<ion-header>
+    <ion-navbar>
+        <button ion-button menuToggle>
+         <ion-icon name="menu"></ion-icon>
+      </button>
+        <ion-title>Como ajudar</ion-title>
+    </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+
+    <p>Pessoas que estão com pensamentos suicidas estão desperançosas - ou seja, sem nenhum tipo de esperança ou perspectiva
+        de melhora na vida - seja emocional, pessoal e profissional.</p>
+    <p>Se você possui lgum amigo, familiar ou conhecido onde você suspeita que esteja tendo pensamentos suicidas, esta lista
+        poderá ajudá-lo.</p>
+
+        <h3>Identificando comportamentos suicidas</h3>
+    <ion-list>
+        <ion-item *ngFor="let suicideSign of suicideSigns | async ; let i=index" no-padding>
+            <p>{{suicideSign.title}}</p>
+        </ion-item>
+    </ion-list>
+
+    <h3>Como ajudar</h3>
+    <ion-list>
+        <ion-item *ngFor="let howToHelp of howToHelps | async ; let i=index" no-padding>
+            <p>{{howToHelp.title}}</p>
+        </ion-item>
+        <div class="disclaimer">
+            <p text-center>Fonte/Créditos: SBIE - Sociedade Brasileira de Inteligência Emocional</p>
+        </div>
+    </ion-list>
+
+
+</ion-content>
