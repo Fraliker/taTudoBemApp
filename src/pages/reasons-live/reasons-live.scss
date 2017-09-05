@@ -1,0 +1,58 @@
+.ios, .md {
+    ion-header { 
+
+        .add-item { 
+            // font-size: 2em;
+            color: #ffffff;
+            font-weight: 700;
+        }
+
+        ion-icon { 
+            color: #ffffff;
+        }
+    } 
+    page-reasons-live {
+        .todos { 
+            ion-item-sliding { 
+                border-left: 5px solid #ffc108;
+                margin: 10px 0;
+                padding-left: 0;
+
+                border-bottom: 0.55px solid #c8c7cc;
+                
+                &.item-block { 
+                    &:first-child,
+                    &:last-child {
+                        border-top: 0;
+                        border-bottom: 0;
+                    }
+                }
+                ion-label { 
+                    text-overflow: none;
+                    white-space: normal;
+                    overflow: inherit;
+                    padding-left: 10px;
+                    // font-size: 13px;
+                    
+                }
+                .item-inner { 
+                    border-bottom: 0;
+                }
+
+            }
+
+            button {
+                background: red;
+                font-size: 12px;
+                ion-icon { 
+                    color: #ffffff;
+                }
+            }
+
+            ion-item-options {
+                border-bottom: 0;
+            }
+        }
+    }
+    
+}
