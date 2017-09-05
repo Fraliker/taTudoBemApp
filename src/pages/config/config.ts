@@ -1,7 +1,8 @@
 import { Storage } from '@ionic/storage';
 import { Component } from '@angular/core';
-import { NavController, LoadingController, Platform, ToastController } from 'ionic-angular'
+import { NavController, LoadingController, Platform, ToastController, MenuController } from 'ionic-angular'
 import { PushService } from "../../providers/push-service/push-service";
+import { WelcomePage } from "../welcome/welcome";
 
 declare var navigator;
 declare var Connection;
@@ -17,14 +18,7 @@ export class ConfigPage {
   public data: any;
   public canBeNotify: boolean;
 
-  constructor(
-    public navController: NavController,
-    public loadingController: LoadingController,
-    public storage: Storage,
-    public pushService: PushService,
-    public platform: Platform,
-    public loadingCtrl: LoadingController,
-    public toastCtrl: ToastController) {
+  constructor(public navController: NavController, public menu: MenuController, public loadingController: LoadingController, public storage: Storage, public pushService: PushService, public platform: Platform, public loadingCtrl: LoadingController, public toastCtrl: ToastController, public navCtrl: NavController) {
 
     this.storage = storage;
     this.data = {};
@@ -51,6 +45,8 @@ export class ConfigPage {
           position: 'bottom'
         });
 
+        this.navCtrl.setRoot(WelcomePage);
+
         toast.present();
       }
 
@@ -58,9 +54,12 @@ export class ConfigPage {
 
   }
 
-  ionViewDidLoad() {
+  ionViewDidLoad() { 
     this.loading();
     this.notify();
+
+    this.menu.close();
+    this.menu.enable(true);
   }
 
 
@@ -81,17 +80,17 @@ export class ConfigPage {
     loading.present();
   }
 
-    notify() {
-      this.storage.get('notifications').then(
-        data => this.canBeNotify = data,
-        error => console.error(error)
-      );
-    }
-
-    saveNotify() {
-      this.storage.set('notifications', this.canBeNotify).then(res => {
-        console.log("save: " + res)
-        this.pushService.setNotify(res);
-      });
-    }
+  notify() {
+    this.storage.get('notifications').then(
+      data => this.canBeNotify = data,
+      error => console.error(error)
+    );
   }
+
+  saveNotify() {
+    this.storage.set('notifications', this.canBeNotify).then(res => {
+      console.log("save: " + res)
+      this.pushService.setNotify(res);
+    });
+  }
+}
