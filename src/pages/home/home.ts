@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
 import { NavController, LoadingController, MenuController, Platform, AlertController, ToastController } from 'ionic-angular';
 import { CallNumber } from '@ionic-native/call-number';
+import { SMS } from '@ionic-native/sms'
+import { Storage } from '@ionic/storage';
+import { WelcomePage } from "../welcome/welcome";
 
 declare var navigator;
 declare var Connection;
@@ -11,6 +14,10 @@ declare var Connection;
 })
 export class HomePage {
 
+  public name;
+  public phone: string;
+  public contacts;
+
   constructor(
     public navCtrl: NavController,
     public loadingCtrl: LoadingController,
@@ -18,7 +25,9 @@ export class HomePage {
     public platform: Platform,
     public alertCtrl: AlertController,
     public toastCtrl: ToastController,
-    private callNumber: CallNumber
+    private callNumber: CallNumber,
+    private sms: SMS,
+    public storage: Storage
   ) {
     this.checkNetwork();
   }
@@ -35,11 +44,13 @@ export class HomePage {
       if (states[networkState] == states[Connection.NONE]) {
         let toast = this.toastCtrl.create({
           message: states[Connection.NONE],
-          duration: 300,
+          duration: 3000,
           showCloseButton: true,
           closeButtonText: 'Ok',
           position: 'bottom'
         });
+
+        this.navCtrl.setRoot(WelcomePage);
 
         toast.present();
       }
@@ -47,7 +58,6 @@ export class HomePage {
     })
 
   }
-
 
   ionViewDidLoad() {
     this.menu.close();
@@ -62,15 +72,19 @@ export class HomePage {
       content: `
       <div class="custom-spinner-container">
         <div class="custom-spinner-box"></div>
-      </div>`,
-      duration: 3000
+      </div>`
     });
 
-    loading.onDidDismiss(() => {
-      console.log('Dismissed loading');
+    loading.present().then(() => {
+      this.storage.get('contactInfo').then(
+        res => {
+          this.name = res.name;
+          this.phone = res.phone;
+        },
+        error => this.name = null
+      );
+      loading.dismiss();
     });
-
-    loading.present();
   }
 
   helpMeAbout() {
@@ -94,14 +108,23 @@ export class HomePage {
     this.callNumber.callNumber(n, true)
       .then(() => console.log('Launched dialer!'))
       .catch(() => console.log('Error launching dialer'));
+
+    if (this.phone != null) {
+      this.sms.send(this.phone, 'Oi ' + this.name + ', ' + 'tudo bem? Infelizmente não estou me sentindo bem. Você pode entrar em contato comigo?' + ' - ' +'Enviado através do app Tá tudo bem?').then((result) => {
+        let successToast = this.toastCtrl.create({
+          message: "Mensagem enviada com sucesso",
+          duration: 3000,
+          position: 'top'
+        })
+        successToast.present();
+      }, (error) => {
+        let errorToast = this.toastCtrl.create({
+          message: "Ocorreu um erro ao enviar a mensagem",
+          duration: 3000,
+          position: 'top'          
+        })
+        errorToast.present();
+      });
+    }
   }
-
-
-  launch(url) {
-    this.platform.ready().then(() => {
-      open(url, '_parent', 'location = yes');
-    });
-
-  }
-
 }
