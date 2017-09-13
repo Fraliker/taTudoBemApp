@@ -1,22 +1,23 @@
 <ion-header>
     <ion-navbar>
-      <button ion-button menuToggle>
+        <button ion-button menuToggle>
          <ion-icon name="menu"></ion-icon>
       </button>
-      <ion-title>Adicionar uma razão</ion-title>
-      <ion-buttons end>
-        <button ion-button (click)="save()">
-            <ion-icon name="checkmark"></ion-icon>
-        </button>
-      </ion-buttons>
+        <ion-title>Adicionar uma razão</ion-title>
     </ion-navbar>
-  </ion-header>
-  
-  <ion-content class="add" padding>
-      <ion-list>
-          <ion-label>Uma das minhas razões de viver é...</ion-label>
-          <ion-item>
-              <ion-textarea type="text" [(ngModel)]="todoItem"></ion-textarea>
-          </ion-item>
-      </ion-list>
-  </ion-content>
+</ion-header>
+
+<ion-content class="add" padding>
+    <ion-list>
+        <ion-label>Uma das minhas razões de viver é...</ion-label>
+        <ion-item>
+            <ion-textarea type="text" [(ngModel)]="todoItem"></ion-textarea>
+        </ion-item>
+    </ion-list>
+</ion-content>
+
+<ion-footer>
+    <button ion-button (click)="save()">
+                Salvar item
+            </button>
+</ion-footer>

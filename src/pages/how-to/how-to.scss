@@ -1,23 +1,28 @@
-.ios, .md {
+.ios,
+.md {
     page-how-to {
-        h3 { 
+        h3 {
             font-size: 16px;
+            color: #888888;
         }
-    
-        ion-list { 
-            ion-item { 
-                ion-label { 
+        ion-list {
+            ion-item {
+                background: #f8f8f8;
+                ion-label {
                     text-overflow: none;
                     white-space: normal;
                     overflow: inherit;
                 }
             }
         }
-        .disclaimer { 
-            background: transparent;
-            font-size: 12px;
-            margin: 10px 0;
+        ion-footer {
+            border-top: 1px solid #dedede;
+            bottom: 0;
+            .disclaimer {
+                background: transparent;
+                font-size: 12px;
+                margin: 0 40px;
+            }
         }
     }
-    
 }

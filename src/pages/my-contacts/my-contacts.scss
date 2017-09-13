@@ -6,19 +6,24 @@
         }
     }
     page-my-contacts {
-        ion-item-sliding {
-            ion-item {
-                padding-left: 0;
-                p {
-                    font-size: 16px;
-                    line-height: 19px;
-                }
-                &.item-block {
-                    border-bottom: 0;
-                }
-                &:last-child { 
-                    border-bottom: 0;
-                }
+        ion-card {
+            margin: 20px 0;
+            width: 100%;
+            border-bottom: 1px solid #f8f8f8;
+            ion-icon {
+                font-size: 3em;
+                opacity: .3;
+            }
+        }
+        .not-contacts {
+            margin: 30px 60px;
+            ion-icon {
+                font-size: 10em;
+                display: block;
+                opacity: .3;
+            }
+            p {
+                opacity: .3;
             }
         }
     }

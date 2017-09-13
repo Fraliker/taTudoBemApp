@@ -3,15 +3,19 @@
     page-add-contact {
         ion-item {
             padding-left: 0;
+            background: #f8f8f8;
         }
-        ion-footer { 
+        ion-footer {
             bottom: 10px;
             display: block;
             width: 95%;
             margin: 0 auto;
             right: 0;
-
-            button { 
+            border-top: 0;
+            &:before {
+                height: 0;
+            }
+            button {
                 background-color: #fbc02d;
                 border-radius: 50px;
             }

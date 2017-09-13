@@ -1,20 +1,21 @@
 <ion-header>
-  <ion-navbar>
-    <button ion-button menuToggle>
+    <ion-navbar>
+        <button ion-button menuToggle>
        <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>Razões para viver</ion-title>
-    <ion-buttons end>
-      <button ion-button (click)="add()" class="add-item">
+        <ion-title>Razões para viver</ion-title>
+        <ion-buttons end>
+            <button ion-button (click)="add()" class="add-item">
           <ion-icon name="create"></ion-icon>
       </button>
-    </ion-buttons>
-  </ion-navbar>
+        </ion-buttons>
+    </ion-navbar>
 </ion-header>
 
 <ion-content class="todos" padding>
-  <p>Crie sua própria lista de razões para viver. Liste tudo que você achar que vale a pena continuar tentando a se manter vivo.
-    Use-os como um lembrete.</p>
+    <p>Crie sua própria lista de razões para viver. Liste tudo que você achar que vale a pena continuar tentando a se manter vivo. Use-os como um lembrete.</p>
+
+    <hr />
 
     <ion-list>
         <ion-item-sliding *ngFor="let todo of todoList; let i = index">

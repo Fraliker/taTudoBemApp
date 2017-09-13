@@ -1,23 +1,35 @@
-.ios, .md { 
-    ion-header { 
-        .back-button-text { 
+.ios,
+.md {
+    ion-header {
+        .back-button-text {
             display: none;
-        }
-        ion-icon { 
-            &:last-child { 
-                // font-size: 3em;
-                font-weight: 700;
-            }
         }
     }
     page-add-reason {
-        ion-item { 
+        ion-item {
             padding-left: 0;
+            background: #f8f8f8;
         }
-        textarea { 
+        textarea {
             height: 60px;
             margin: 10px 0;
         }
+        ion-footer {
+            bottom: 10px;
+            display: block;
+            margin: 0 auto;
+            right: 0;
+            width: 95%;
+            border-top: 0;
+            &:before {
+                height: 0;
+            }
+            button {
+                background-color: #fbc02d;
+                border-radius: 50px;
+                width: 100%;
+                height: 40px;
+            }
+        }
     }
-    
 }

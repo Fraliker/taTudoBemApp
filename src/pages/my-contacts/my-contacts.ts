@@ -72,7 +72,7 @@ export class MyContactsPage {
         },
         error => {
           this.name = null;
-          this.phone = null
+          this.phone = null;
         }
       );
       loading.dismiss();

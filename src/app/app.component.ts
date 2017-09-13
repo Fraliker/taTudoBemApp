@@ -13,7 +13,6 @@ import { ReasonsLivePage } from "../pages/reasons-live/reasons-live";
 import { HowToPage } from "../pages/how-to/how-to";
 import { MyContactsPage } from "../pages/my-contacts/my-contacts";
 
-
 @Component({
   templateUrl: 'app.html',
   providers: [PushService]
@@ -30,7 +29,7 @@ export class MyApp {
 
     this.pages = [
       { title: 'Preciso de ajuda', component: HomePage, icon: 'call' },
-      { title: 'Contatos de emergência', component: MyContactsPage, icon: 'contact' },
+      { title: 'Contatos de emergência', component: MyContactsPage, icon: 'people' },
       { title: 'Mitos sobre o suicídio', component: FaqPage, icon: 'paper' },
       { title: 'Razões para viver', component: ReasonsLivePage, icon: 'clipboard' },
       { title: 'Como ajudar', component: HowToPage, icon: 'text' },

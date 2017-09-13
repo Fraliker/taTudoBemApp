@@ -1,3 +1,16 @@
-page-config {
-
+.ios,
+.md {
+    page-config {
+        ion-item {
+            background: #f8f8f8;
+        }
+        .toggle {
+            &.toggle-checked {
+                .toggle-icon,
+                .toggle-inner {
+                    background-color: #fbc02d;
+                }
+            }
+        }
+    }
 }
