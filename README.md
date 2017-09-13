@@ -39,9 +39,9 @@ Através do app é possível:
 - HTML5
 - SASS
 
-## Ferramenta para envio de pushs
-
+## Ferramentas utilizadas
 - OneSignal
+- Firebase
 
 
 ## To do 
