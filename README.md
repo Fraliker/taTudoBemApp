@@ -34,7 +34,6 @@ Através do app é possível:
 
 - IONIC 3
 - Angular 4
-- Firebase
 - Typescript 
 - HTML5
 - SASS
@@ -42,7 +41,6 @@ Através do app é possível:
 ## Ferramentas utilizadas
 - OneSignal
 - Firebase
-
 
 ## To do 
 
