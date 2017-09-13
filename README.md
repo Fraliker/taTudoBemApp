@@ -30,15 +30,19 @@ Através do app é possível:
 - Como ajudar: orientações de como proceder e também identificar alguém que esteja com pensamentos suicidas; 
 - Contato de emergência: o usuário poderá cadastrar 1 contato de emergência e caso ele clique no botão "Preciso falar com alguém agora", automaticamente será enviado uma mensagem SMS para este contato informando que a pessoa não está bem.
 
-## Tecnologias e ferramentas utilizadas
+## Tecnologias utilizadas
 
-- IONIC 3; 
-- Angular 4; 
-- Firebase; 
-- OneSignal; 
-- Typescript; 
-- HTML5; 
-- SASS;
+- IONIC 3
+- Angular 4
+- Firebase
+- Typescript 
+- HTML5
+- SASS
+
+## Ferramenta para envio de pushs
+
+- OneSignal
+
 
 ## To do 
 
