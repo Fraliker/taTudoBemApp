@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.ionicframework.tatudobemapp" version="0.0.3" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget id="com.ionicframework.tatudobemapp" version="0.0.4" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>Tá tudo bem?</name>
     <description>App desenvolvido para trazer informações e dismitificar o suicídio</description>
     <author email="contato@alinebezzoco.com" href="http://alinebezzoco.com">Aline Bezzoco</author>
@@ -89,14 +89,16 @@
     </platform>
     <engine name="android" spec="^6.2.3" />
     <engine name="browser" spec="^4.1.0" />
+    <plugin name="call-number" spec="^1.0.1" />
     <plugin name="cordova-plugin-console" spec="^1.0.5" />
     <plugin name="cordova-plugin-device" spec="^1.1.4" />
+    <plugin name="cordova-plugin-firebase" spec="^0.1.24" />
     <plugin name="cordova-plugin-network-information" spec="^1.3.3" />
     <plugin name="cordova-plugin-splashscreen" spec="^4.0.3" />
     <plugin name="cordova-plugin-statusbar" spec="^2.2.2" />
     <plugin name="cordova-plugin-whitelist" spec="^1.3.1" />
     <plugin name="cordova-sms-plugin" spec="^0.1.11" />
     <plugin name="ionic-plugin-keyboard" spec="^2.2.1" />
-    <plugin name="mx.ferreyra.callnumber" spec="~0.0.2" />
+    <plugin name="mx.ferreyra.callnumber" />
     <plugin name="onesignal-cordova-plugin" spec="^2.2.0" />
 </widget>
