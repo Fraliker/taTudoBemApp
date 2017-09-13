@@ -24,21 +24,22 @@ Todas as informações contidas dentro deste aplicativo tiveram supervisão de u
 
 Através do app é possível: 
 
-- Ligação emergencial: Ao clicar no botão "Preciso falar com alguém agora", automaticamente será feita uma ligação para o CVV - Centro de Valorização da Vida através do número 141 (e para isso o app solicita uma permissão para realizar ligações no device); 
-- Notificações: 3 vezes na semana você recebe uma notificação com uma mensagem de apoio emocional;
-- Mitos e verdades: informações sobre o que é verdadeiro ou falso a respeito do suicídio. 
+- Ligação emergencial: ao clicar no botão "Preciso falar com alguém agora", automaticamente será feita uma ligação para o CVV - Centro de Valorização da Vida através do número 141 (e para isso o app solicita uma permissão para realizar ligações no device); 
+- Notificações: notificações diárias oferencendo apoio emocional;
+- Mitos e verdades: informações sobre o que é verdadeiro ou falso a respeito do suicídio; 
+- Como ajudar: orientações de como proceder e também identificar alguém que esteja com pensamentos suicidas; 
+- Contato de emergência: o usuário poderá cadastrar 1 contato de emergência e caso ele clique no botão "Preciso falar com alguém agora", automaticamente será enviado uma mensagem SMS para este contato informando que a pessoa não está bem.
 
-## Tecnologias utilizadas
+## Tecnologias e ferramentas utilizadas
 
 - IONIC 3; 
 - Angular 4; 
 - Firebase; 
-- Pushwoosh; 
+- OneSignal; 
 - Typescript; 
 - HTML5; 
 - SASS;
 
 ## To do 
 
-- Como Ajudar; 
-- Agenda de contatos
+- Mood diary 
