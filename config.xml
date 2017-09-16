@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.ionicframework.tatudobemapp" version="0.0.4" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget id="com.ionicframework.tatudobemapp" version="0.0.5" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>Tá tudo bem?</name>
     <description>App desenvolvido para trazer informações e dismitificar o suicídio</description>
     <author email="contato@alinebezzoco.com" href="http://alinebezzoco.com">Aline Bezzoco</author>
