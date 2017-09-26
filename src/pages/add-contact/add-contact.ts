@@ -13,9 +13,6 @@ export class AddContactPage {
 
   contacts: FormGroup;
 
-  masks: any;
-  phone: any;
-
   constructor(public navCtrl: NavController, public menu: MenuController, public navParams: NavParams, public toastCtrl: ToastController, private formBuilder: FormBuilder, public storage: Storage) {
 
     this.contacts = this.formBuilder.group({

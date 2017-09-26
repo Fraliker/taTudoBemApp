@@ -49,8 +49,8 @@ export class MyContactsPage {
     })
 
   }
-  
-  ionViewDidLoad() { 
+
+  ionViewDidLoad() {
     this.menu.close();
     this.menu.enable(true);
   }
@@ -80,7 +80,9 @@ export class MyContactsPage {
   }
 
   add() {
-    this.navCtrl.push(AddContactPage);
+    if (!this.phone) {
+      this.navCtrl.push(AddContactPage);
+    }
   }
 
   delete(contactInfo) {
@@ -98,7 +100,21 @@ export class MyContactsPage {
         {
           text: 'Sim',
           handler: () => {
-            this.storage.remove('contactInfo');              
+            let loading = this.loadingCtrl.create({
+              spinner: 'crescent',
+              content: `
+                <div class="custom-spinner-container">
+                  <div class="custom-spinner-box"></div>
+                </div>`
+            });
+            this.storage.remove('contactInfo').then(
+              res => {
+                loading.present().then(() => {
+                  this.name = null;
+                  this.phone = null;
+                  loading.dismiss();
+                });
+            });
           }
         }
       ]

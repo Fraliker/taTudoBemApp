@@ -1,24 +1,24 @@
 <ion-header>
     <ion-navbar>
-      <button ion-button menuToggle>
+        <button ion-button menuToggle>
          <ion-icon name="menu"></ion-icon>
       </button>
-      <ion-title>Adicionar contato</ion-title>
+        <ion-title>Adicionar contato</ion-title>
     </ion-navbar>
-  </ion-header>
-  
-  <ion-content class="add" padding>
-      <form [formGroup]="contacts" (ngSubmit)="save()">
+</ion-header>
+
+<ion-content class="add" padding>
+    <form [formGroup]="contacts" (ngSubmit)="save()">
         <ion-label>Nome</ion-label>
-          <ion-item>
+        <ion-item>
             <ion-input type="text" formControlName="name" placeholder="Digite o nome do contato"></ion-input>
-          </ion-item>
-          <ion-label>Telefone celular</ion-label>
-          <ion-item>
+        </ion-item>
+        <ion-label>Telefone celular</ion-label>
+        <ion-item>
             <ion-input type="number" formControlName="phone" placeholder="Ex.: 21 22222-1111"></ion-input>
-          </ion-item>
-          <ion-footer>
-              <button ion-button full type="submit" [disabled]="!contacts.valid">Adicionar contato</button>              
-          </ion-footer>
-        </form>
-  </ion-content>
+        </ion-item>
+        <ion-footer>
+            <button ion-button full type="submit" [disabled]="!contacts.valid">Adicionar contato</button>
+        </ion-footer>
+    </form>
+</ion-content>
